@@ -31,7 +31,7 @@ docker-compose up -d
 Raw machine:
 
 ```shell
-./vendor/bin/phpunit
+./vendor/bin/phpunit tests --filter OrderTest
 ```
 
 Dockerized:
