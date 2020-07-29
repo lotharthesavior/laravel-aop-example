@@ -1,0 +1,40 @@
+version: '2'
+services:
+
+  # The Application
+  php:
+    build:
+      context: ./docker/php
+    container_name: laravel-aop-php
+    working_dir: /var/www/html
+    # env_file: '.env'
+    volumes:
+      - "./:/var/www/html"
+    links:
+      - mysql
+
+  # local mysql server
+  mysql:
+    image: "mysql:5.7"
+    container_name: laravel-aop-mysql
+    volumes:
+      - ./docker/mysql_data:/var/lib/mysql
+      - ./docker/mysql_dump:/var/mysql_dump
+    environment:
+      - "MYSQL_DATABASE=laravel-aop"
+      - "MYSQL_USER=dev"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "33061:3306"
+
+  # nginx server
+  web:
+    image: nginx
+    container_name: laravel-aop-nginx
+    working_dir: /var/www/html
+    volumes:
+      - ./docker/nginx/vhost.local.conf:/etc/nginx/conf.d/default.conf
+      - ./:/var/www/html
+    ports:
+      - 8080:80
