@@ -24,7 +24,7 @@ jobs:
     - name: Setup Database
       run: |
           sudo systemctl start mysql
-          mysql --port 3306 -u root -proot -e 'CREATE DATABASE IF NOT EXISTS laravel-aop;'
+          mysql --port 3306 -u root -proot -e 'CREATE DATABASE IF NOT EXISTS `laravel-aop`;'
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: mysql_test
