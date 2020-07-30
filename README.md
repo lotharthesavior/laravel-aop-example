@@ -1,5 +1,6 @@
 # Laravel AOP Example
 
+![Tests](https://github.com/lotharthesavior/laravel-aop-example/workflows/Tests/badge.svg)
 
 
 This is an example of the usage of the package [Laravel-Aspect](https://github.com/ytake/Laravel-Aspect) with a custom Aspect example.
